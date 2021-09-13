@@ -1,2 +1,4 @@
 rootProject.name = "DNCDLibApp"
 include ':app'
+include ':components:lib_third_sdk'
+include ':model_dncd_sdk'
