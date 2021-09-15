@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
 }
 
@@ -8,13 +8,13 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "cn.cd.dn.sdk"
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
-        versionName "1.0"
+        versionName "2.0.3"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -37,11 +37,19 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+//    implementation 'com.google.android.material:material:1.4.0'
+//    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+//    testImplementation 'junit:junit:4.+'
+//    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //导入本地的一些依赖Lib模块
+//    api project(':components:lib_third')
+
+    //常用工具库,常用工具的聚合库,参考：https://blankj.com/2016/07/31/android-utils-code/
+    api 'com.blankj:utilcodex:1.30.1'
+    //常用的一个hook库
+    api 'io.github.15198184721:AndroidSandHook:1.0'
 }
 
 ext {
