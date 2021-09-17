@@ -1,0 +1,38 @@
+此方式为离线引入为离线引入的方式：
+引入参考：
+    //示例
+    https://github.com/HujiangTechnology/AspectJX-Demo
+    //源码
+    https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
+
+使用方式：
+
+【1】、将当前的“plugins”目录复制到项目的根目录(如果在其他位置则"2"中的相关配置路劲也需要更改)
+【2】、再项目的根目录“build.gradle“ 添加如下配置：
+    dependencies {
+        classpath fileTree(dir:'plugins', include:['*.jar'])
+        // ...其他配置略
+    }
+【3】、在“app”模块中加入如下应用插件的配置：
+    id 'android-aspectjx'
+    或者
+    id 'com.hujiang.android-aspectjx'
+
+【4】、再有aop代码的模块引入如下库：
+    api 'org.aspectj:aspectjrt:1.9.5'
+
+以下配置可选：
+
+【5】、可以再“app”模块中对“aspectjx”进行配置(和android{}同一层级)：
+    注意：
+        2.0.0版本之后,旧版本的includeJarFilter和excludeJarFilter命令废弃，不再支持使用
+        2.0.0版本的 include,exclude通过package路径匹配class文件及jar文件，
+        不再支持通过jar物理文件路径匹配的方式，比如：
+
+    aspectjx {
+        //排除所有package路径中包含`android.support`,`androidx`的class文件及库（jar文件）
+    	exclude 'android.support','androidx'
+        //指定只对含有关键字'universal-image-loader', 'AspectJX-Demo/library'的库进行织入扫描，忽略其他库，提升编译效率
+    //    include 'universal-image-loader', 'AspectJX-Demo/library'
+    //    ajcArgs '-Xlint:warning'
+    }
