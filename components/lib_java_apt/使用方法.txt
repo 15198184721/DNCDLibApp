@@ -1,0 +1,9 @@
+想要使用此库需要进行如下接入：
+1、加入kotlin的apt支持：
+    plugins {
+        id 'kotlin-kapt'
+    }
+2、导入注解包：
+    kapt project(':components:lib_java_apt')
+3、添加注解处理器：
+    kapt project(':components:lib_java_apt')
