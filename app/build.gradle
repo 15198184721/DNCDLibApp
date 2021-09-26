@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'android-aspectjx'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -17,10 +19,31 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes {
+    signingConfigs {
         release {
+            keyAlias 'fqwfAlias'
+            keyPassword 'fqwf123456'
+            storeFile rootProject.file('keystore/fqwf.jks')
+            storePassword 'fqwf123456'
+//            v2SigningEnabled true
+//            v1SigningEnabled true
+        }
+    }
+
+    buildTypes {
+        debug {
             minifyEnabled false
+            shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
         }
     }
     compileOptions {
@@ -30,6 +53,18 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+}
+
+aspectjx {
+    //排除所有package路径中包含`android.support`,`androidx`的class文件及库（jar文件）
+    exclude 'android.support'
+    exclude 'androidx'
+    exclude 'versions.9'
+    exclude 'com.squareup'
+    exclude 'leakcanary'
+//    exclude 'com.taobao'
+//    exclude 'com.ut'
+//    include 'TestAop/lib_aop'
 }
 
 dependencies {
@@ -43,6 +78,9 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
-    implementation 'io.github.15198184721:model_dncd_sdk:2.0.3'
-//    api project(':model_dncd_sdk')
+    //正式的导入
+//    implementation 'io.github.15198184721:model_dncd_sdk:2.0.3'
+    //测试的导入
+    api project(':model_dncd_sdk')
+    kapt project(':components:lib_java_apt')
 }

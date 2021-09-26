@@ -5,9 +5,25 @@
     //源码
     https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
 
+【注意点】 如果使用的“gardle”版本为7.0及以上。需要额外操作2步
+ -【1】、需要将“settings.gradle”中的“dependencyResolutionManagement”节点移除
+ -【2】、再项目根目录的“build.gradle”增加如下节点：
+   //由于7.0将所有的仓库配置移动至settings.gradle导致AspectJ可能报错。所以作此修改
+   allprojects {
+       repositories {
+           //仓库地址根据自己需要调整
+           google()
+           mavenCentral()
+           jcenter() // Warning: this repository is going to shut down soon
+           maven { url("D:\\\\maven\\repo") }
+       }
+   }
+
+ 说明：以上配置基于参考库的：2.0.9(本地)、2.0.10(远端),更新的版本可能会修复此问题 -[后续验证]
+
 使用方式：
 
-【1】、将当前的“plugins”目录复制到项目的根目录(如果在其他位置则"2"中的相关配置路劲也需要更改)
+【1】、将"lib_aop"模块中的“plugins”目录复制到项目的根目录(如果在其他位置则"2"中的相关配置路劲也需要更改)
 【2】、再项目的根目录“build.gradle“ 添加如下配置：
     dependencies {
         classpath fileTree(dir:'plugins', include:['*.jar'])
@@ -18,8 +34,8 @@
     或者
     id 'com.hujiang.android-aspectjx'
 
-【4】、再有aop代码的模块引入如下库：
-    api 'org.aspectj:aspectjrt:1.9.5'
+【4】、在有aop代码的模块引入如下库：
+    api 'org.aspectj:aspectjrt:1.9.6'
 
 以下配置可选：
 

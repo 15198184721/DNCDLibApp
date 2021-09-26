@@ -1,0 +1,7 @@
+注意：
+    测试可以使用本地导入。发布一定要每个model再maven中有。采用mavne的方式导入。否则无法被引用到
+    因为androidStudio打包model不会将本地导入的model合并编译打包。只会对maven导入的进行关联
+
+本地model -> maven导入路径：
+    model_dncd_sdk -> io.github.15198184721:model_dncd_sdk:*
+    components/lib_aop -> io.github.15198184721:dncd-aop:*

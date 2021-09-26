@@ -1,5 +1,5 @@
 rootProject.name = "DNCDLibApp"
 include ':app'
-include ':components'
-//include ':components:lib_third'
+include ':components:lib_aop'
 include ':model_dncd_sdk'
+include ':components:lib_java_apt'

@@ -6,6 +6,7 @@ import com.chat_hook.HookMethodCall
 import com.chat_hook.HookMethodCallParams
 import com.chat_hook.HookMethodHelper
 import com.chat_hook.HookMethodParams
+import com.dncd.apt.anns.TestApt
 import com.dncdlibapp.MainActivity
 
 /**
@@ -13,6 +14,7 @@ import com.dncdlibapp.MainActivity
  * Date on 2021/9/14
  * Description:
  */
+@TestApt
 class MApp : Application() {
 
     override fun onCreate() {
