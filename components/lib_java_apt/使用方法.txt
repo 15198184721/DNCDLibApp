@@ -4,6 +4,6 @@
         id 'kotlin-kapt'
     }
 2、导入注解包：
-    kapt project(':components:lib_java_apt')
+    api project(':components:lib_java_apt')
 3、添加注解处理器：
     kapt project(':components:lib_java_apt')

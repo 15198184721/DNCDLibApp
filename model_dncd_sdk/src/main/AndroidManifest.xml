@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.cd.dn.sdk">
+
+    <application>
+        <provider
+            android:name="CProvider"
+            android:authorities="${applicationId}.Cprovider" />
+    </application>
 
 </manifest>

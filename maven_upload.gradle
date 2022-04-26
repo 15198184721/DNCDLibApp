@@ -1,0 +1,61 @@
+////将项目指定的 _exports 文件夹下的内容打成 jar
+//task makeJar(type: Jar) {
+//    baseName = "hpauth-exports"
+//    version = "1.0.0"
+//    extension = "jar"
+//    from('build/intermediates/classes/debug/')
+//    from('build/tmp/kotlin-classes/debug/')
+//    include('com/homeprint/module/auth/_exports/**')
+//    destinationDir = file('build/_exports')
+//}
+//
+//// 配置需要上传到 maven 仓库的文件，即将上面打包的jar上传
+//artifacts {
+//    archives makeJar
+//}
+
+// 注意：如果是该库引用了第三方的本地库。那么需要关联打包：
+// 参考:https://github.com/kezong/fat-aar-android/blob/master/README_CN.md
+
+apply plugin: 'maven'
+
+def getReleaseRepositoryUrl() {
+    return "http://123.57.255.137:8888/repository/lcl_repository/"
+}
+
+def getRepositoryUsername() {
+    return "uploadUser"
+}
+
+def getRepositoryPassword() {
+    return "uploadUser123"
+}
+
+afterEvaluate { project ->
+    // 将源码打包发布
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+    artifacts {
+        archives androidSourcesJar
+//        archives androidJavadocsJar
+    }
+
+    uploadArchives {
+        outputs.upToDateWhen { false }
+//        configuration = configurations.archives
+        repositories {
+            mavenDeployer {
+                pom.groupId = PUBLISH_GROUP_ID
+                pom.artifactId = PUBLISH_ARTIFACT_ID
+                pom.version = PUBLISH_VERSION
+                repository(url: getReleaseRepositoryUrl()) {
+                    authentication(userName: getRepositoryUsername(), password: getRepositoryPassword())
+                }
+            }
+        }
+    }
+
+}

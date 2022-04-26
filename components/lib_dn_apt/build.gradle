@@ -1,0 +1,26 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.squareup:javapoet:1.10.0'
+    //常用的一个hook库
+    implementation('io.github.15198184721:AndroidSandHook:1.0')
+}
+
+//上传到本地Maven的配置信息
+ext {
+    PUBLISH_GROUP_ID = "com.dn.apt"  //申请的mven的GroupId
+    PUBLISH_ARTIFACT_ID = "${project.getName()}"     //项目名,可以理解为除了GroupId之外的二级引用,一般为model名称
+//    PUBLISH_VERSION = android.defaultConfig.versionName  //版本号(直接引用了Model的版本号名称)
+    PUBLISH_VERSION = "1.0.0"  //版本号(直接引用了Model的版本号名称)
+}
+
+apply from: rootProject.file("${rootProject.projectDir}/maven_upload_jar.gradle")

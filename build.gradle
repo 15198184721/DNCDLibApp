@@ -4,6 +4,11 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://artifact.bytedance.com/repository/Volcengine/' }
+        maven { url 'http://123.57.255.137:8888/repository/lcl_maven_group/' }
         maven { url("D:\\\\maven\\repo") }
     }
     dependencies {
@@ -20,8 +25,12 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
+        jcenter()
         maven { url("D:\\\\maven\\repo") }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url 'https://artifact.bytedance.com/repository/Volcengine/' }
+        maven { url 'http://123.57.255.137:8888/repository/lcl_maven_group/' }
     }
 }
 

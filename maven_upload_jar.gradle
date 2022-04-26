@@ -1,0 +1,45 @@
+apply plugin: 'maven'
+
+////将项目指定的 _exports 文件夹下的内容打成 jar
+//task makeJar(type: Jar) {
+//    baseName = "hpauth-exports"
+//    version = "1.0.0"
+//    extension = "jar"
+//    from('build/intermediates/classes/debug/')
+//    from('build/tmp/kotlin-classes/debug/')
+//    include('com/homeprint/module/auth/_exports/**')
+//    destinationDir = file('build/_exports')
+//}
+//
+//// 配置需要上传到 maven 仓库的文件，即将上面打包的jar上传
+//artifacts {
+//    archives makeJar
+//}
+
+// 注意：如果是该库引用了第三方的本地库。那么需要关联打包：
+// 参考:https://github.com/kezong/fat-aar-android/blob/master/README_CN.md
+
+uploadArchives {
+    outputs.upToDateWhen { false }  // do not UP-TO_DATE
+    //编译model
+//    dependsOn("assemble")
+    //将编译的model文件上传德奥maven服务器
+    configuration = configurations.archives
+    repositories {
+        mavenDeployer {
+            pom.project {
+                groupId PUBLISH_GROUP_ID
+                artifactId PUBLISH_ARTIFACT_ID
+                version PUBLISH_VERSION
+                description '提交的描述信息...'
+            }
+            //上传的类型
+            pom.packaging = 'jar'
+            // 仓库路径（只能是hosted仓库）
+            repository(url: 'http://123.57.255.137:8888/repository/lcl_repository/') {
+                // 你 Nexus 的账户密码
+                authentication(userName: 'uploadUser', password: 'uploadUser123')
+            }
+        }
+    }
+}

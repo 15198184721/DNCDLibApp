@@ -11,7 +11,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
-        versionName "2.0.3"
+        versionName "2.0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -44,16 +44,16 @@ dependencies {
 //    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     //导入本地的一些依赖Lib模块(注意：打包发布后此模块找不到。请使用maven方式依赖)
-    api project(':components:lib_aop')
+//    api project(':components:lib_aop')
 
     //常用工具库,常用工具的聚合库,参考：https://blankj.com/2016/07/31/android-utils-code/
-    api 'com.blankj:utilcodex:1.30.1'
+    api 'com.blankj:utilcodex:1.31.0'
     //常用的一个hook库
-    api 'io.github.15198184721:AndroidSandHook:1.0'
+    api 'com.donews.lk:AndroidHook:1.1.0'
 }
 
 ext {
-    PUBLISH_GROUP_ID = "io.github.15198184721"  //申请的mven的GroupId
+    PUBLISH_GROUP_ID = "com.donews.lk"  //申请的mven的GroupId
     PUBLISH_ARTIFACT_ID = 'model_dncd_sdk'     //项目名,可以理解为除了GroupId之外的二级引用,一般为model名称
     PUBLISH_VERSION = android.defaultConfig.versionName  //版本号(直接引用了Model的版本号名称)
 }
