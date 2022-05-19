@@ -30,6 +30,6 @@ dependencies {
     //apt库
     api project(':components:lib_dn_apt')
     //常用的一个hook库
-    api('io.github.15198184721:AndroidSandHook:1.0')
+    api 'com.donews.lk:AndroidHook:1.1.1'
     kapt project(':components:lib_dn_apt')
 }

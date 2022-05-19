@@ -10,7 +10,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.dncdlibapp"
+        applicationId "com.dncdlibapp.abcd"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 11
@@ -113,10 +113,9 @@ dependencies {
 //    api("com.donews.utilslibrary:library-utils:1.1.7")
 
     //正式的导入
-//    implementation 'io.github.15198184721:model_dncd_sdk:2.0.4'
-    implementation 'com.donews.lk:model_dncd_sdk:2.0.4'
+//    implementation 'com.donews.lk:model_dncd_sdk:2.0.8'
     //测试的导入
-//    api project(':model_dncd_sdk')
+    api project(':model_dncd_sdk')
 //    kapt project(':components:lib_java_apt')
 
 //    api project(':components:lib_dn_apt')

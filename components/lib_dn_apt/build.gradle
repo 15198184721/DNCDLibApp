@@ -11,8 +11,8 @@ java {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.squareup:javapoet:1.10.0'
-    //常用的一个hook库
-    implementation('io.github.15198184721:AndroidSandHook:1.0')
+//    //常用的一个hook库
+//    implementation 'com.donews.lk:AndroidHook:1.1.1'
 }
 
 //上传到本地Maven的配置信息

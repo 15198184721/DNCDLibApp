@@ -11,7 +11,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
-        versionName "2.0.5"
+        versionName "2.0.8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -49,7 +49,25 @@ dependencies {
     //常用工具库,常用工具的聚合库,参考：https://blankj.com/2016/07/31/android-utils-code/
     api 'com.blankj:utilcodex:1.31.0'
     //常用的一个hook库
-    api 'com.donews.lk:AndroidHook:1.1.0'
+    api 'com.donews.lk:AndroidHook:1.1.1'
+
+
+    //以下库如果存在冲突。请排除即可
+    // 网络请求的库(如果外部冲突可以排除)
+    implementation 'com.squareup.okhttp3:okhttp:4.9.2'
+    // RxJava2 相关
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.10'
+    // RxAndroid 相关
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
+
+    //【RxJava生命周期管理组件】参考：https://github.com/trello/RxLifecycle
+    // 使用的是 java 时候的(RxJava)生命周期绑定组件
+    implementation 'com.trello.rxlifecycle4:rxlifecycle:4.0.2'
+    implementation 'com.trello.rxlifecycle4:rxlifecycle-android:4.0.2'
+    // 使用的是 kotlin 时候的(RxJava)生命周期绑定组件
+//    implementation 'com.trello.rxlifecycle4:rxlifecycle-kotlin:4.0.2'
+    implementation 'com.trello.rxlifecycle4:rxlifecycle-android-lifecycle-kotlin:4.0.2'
+
 }
 
 ext {
