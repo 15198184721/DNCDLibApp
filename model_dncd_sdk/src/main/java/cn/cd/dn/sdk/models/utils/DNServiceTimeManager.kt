@@ -117,7 +117,9 @@ class DNServiceTimeManager private constructor() {
         DNPrint.logE(">> 服务器时开始更新")
         Observable.just("")
             .map {
-                val request = Request.Builder().url(serviceTimeGetURL).build()
+                val request =
+                    Request.Builder().url(serviceTimeGetURL + DNOkHttpInit.getDnCommonJson())
+                        .build()
                 val response = DNOkHttpInit.getDNOkHttp().newCall(request).execute()
                 if (response.isSuccessful) {
                     val joon = response.body?.string() ?: ""

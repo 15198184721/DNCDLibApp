@@ -11,7 +11,7 @@ android {
         minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
-        versionName "2.0.8"
+        versionName "2.0.12"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -49,7 +49,7 @@ dependencies {
     //常用工具库,常用工具的聚合库,参考：https://blankj.com/2016/07/31/android-utils-code/
     api 'com.blankj:utilcodex:1.31.0'
     //常用的一个hook库
-    api 'com.donews.lk:AndroidHook:1.1.1'
+    api 'com.donews.lk:AndroidHook:1.1.2'
 
 
     //以下库如果存在冲突。请排除即可
